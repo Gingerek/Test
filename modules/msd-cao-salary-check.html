@@ -179,8 +179,9 @@ h1{
 }
 .calculator-overlay.impact-animating{
   will-change:transform,opacity,filter;
-  animation:calculatorHeavyDrop 1.12s both cubic-bezier(.16,.82,.22,1);
 }
+.calculator-overlay.impact-animating.impact-run-a{animation:calculatorHeavyDropA 1.12s both cubic-bezier(.16,.82,.22,1)}
+.calculator-overlay.impact-animating.impact-run-b{animation:calculatorHeavyDropB 1.12s both cubic-bezier(.16,.82,.22,1)}
 .calculator-panel{
   position:relative;
   z-index:2;
@@ -194,9 +195,8 @@ h1{
   background:#06101c;
   box-shadow:0 24px 72px rgba(15,23,42,.34),0 0 22px rgba(36,224,208,.08);
 }
-.calculator-overlay.impact-animating .calculator-panel{
-  animation:calculatorPanelImpactGlow 1.12s both ease-out;
-}
+.calculator-overlay.impact-animating.impact-run-a .calculator-panel{animation:calculatorPanelImpactGlowA 1.12s both ease-out}
+.calculator-overlay.impact-animating.impact-run-b .calculator-panel{animation:calculatorPanelImpactGlowB 1.12s both ease-out}
 .calculator-panel-head{
   min-height:50px;
   padding:7px 9px 7px 15px;
@@ -308,13 +308,19 @@ h1{
   transform:rotate(var(--angle,0deg)) scaleX(0);
   transform-origin:left center;
 }
-.calculator-overlay.impact-animating .impact-flash{animation:calculatorImpactFlash .62s .54s both ease-out}
-.calculator-overlay.impact-animating .impact-wave.wave-one{animation:calculatorShockwave .72s .55s both cubic-bezier(.12,.72,.2,1)}
-.calculator-overlay.impact-animating .impact-wave.wave-two{animation:calculatorShockwave .86s .59s both cubic-bezier(.12,.72,.2,1)}
-.calculator-overlay.impact-animating .impact-ground{animation:calculatorGroundPulse .72s .54s both ease-out}
-.calculator-overlay.impact-animating .impact-particle{animation:calculatorParticleBurst .78s calc(.55s + var(--delay,0ms)) both cubic-bezier(.14,.64,.28,1)}
-.calculator-overlay.impact-animating .impact-fracture{animation:calculatorFracture .72s calc(.56s + var(--delay,0ms)) both ease-out}
-@keyframes calculatorHeavyDrop{
+.calculator-overlay.impact-run-a .impact-flash{animation:calculatorImpactFlashA .62s .54s both ease-out}
+.calculator-overlay.impact-run-b .impact-flash{animation:calculatorImpactFlashB .62s .54s both ease-out}
+.calculator-overlay.impact-run-a .impact-wave.wave-one{animation:calculatorShockwaveA .72s .55s both cubic-bezier(.12,.72,.2,1)}
+.calculator-overlay.impact-run-b .impact-wave.wave-one{animation:calculatorShockwaveB .72s .55s both cubic-bezier(.12,.72,.2,1)}
+.calculator-overlay.impact-run-a .impact-wave.wave-two{animation:calculatorShockwaveA .86s .59s both cubic-bezier(.12,.72,.2,1)}
+.calculator-overlay.impact-run-b .impact-wave.wave-two{animation:calculatorShockwaveB .86s .59s both cubic-bezier(.12,.72,.2,1)}
+.calculator-overlay.impact-run-a .impact-ground{animation:calculatorGroundPulseA .72s .54s both ease-out}
+.calculator-overlay.impact-run-b .impact-ground{animation:calculatorGroundPulseB .72s .54s both ease-out}
+.calculator-overlay.impact-run-a .impact-particle{animation:calculatorParticleBurstA .78s calc(.55s + var(--delay,0ms)) both cubic-bezier(.14,.64,.28,1)}
+.calculator-overlay.impact-run-b .impact-particle{animation:calculatorParticleBurstB .78s calc(.55s + var(--delay,0ms)) both cubic-bezier(.14,.64,.28,1)}
+.calculator-overlay.impact-run-a .impact-fracture{animation:calculatorFractureA .72s calc(.56s + var(--delay,0ms)) both ease-out}
+.calculator-overlay.impact-run-b .impact-fracture{animation:calculatorFractureB .72s calc(.56s + var(--delay,0ms)) both ease-out}
+@keyframes calculatorHeavyDropA{
   0%{opacity:0;filter:blur(2px);transform:translate3d(0,calc(-100vh - 220px),0) rotate(-2.8deg) scale(.94)}
   40%{opacity:1;filter:blur(0)}
   56%{transform:translate3d(0,0,0) rotate(.7deg) scaleX(1.045) scaleY(.955)}
@@ -324,38 +330,87 @@ h1{
   93%{transform:translate3d(0,0,0) rotate(.05deg) scaleX(1.006) scaleY(.994)}
   100%{opacity:1;filter:none;transform:translate3d(0,0,0) rotate(0) scale(1)}
 }
-@keyframes calculatorPanelImpactGlow{
+@keyframes calculatorHeavyDropB{
+  0%{opacity:0;filter:blur(2px);transform:translate3d(0,calc(-100vh - 220px),0) rotate(-2.8deg) scale(.94)}
+  40%{opacity:1;filter:blur(0)}
+  56%{transform:translate3d(0,0,0) rotate(.7deg) scaleX(1.045) scaleY(.955)}
+  66%{transform:translate3d(0,-34px,0) rotate(-.5deg) scaleX(.992) scaleY(1.008)}
+  76%{transform:translate3d(0,0,0) rotate(.22deg) scaleX(1.02) scaleY(.98)}
+  85%{transform:translate3d(0,-10px,0) rotate(-.12deg) scale(.998)}
+  93%{transform:translate3d(0,0,0) rotate(.05deg) scaleX(1.006) scaleY(.994)}
+  100%{opacity:1;filter:none;transform:translate3d(0,0,0) rotate(0) scale(1)}
+}
+@keyframes calculatorPanelImpactGlowA{
   0%,45%{box-shadow:0 24px 72px rgba(15,23,42,.34),0 0 22px rgba(36,224,208,.08)}
   56%{box-shadow:0 8px 26px rgba(15,23,42,.48),0 0 0 2px rgba(126,255,245,.48),0 0 54px rgba(36,224,208,.36)}
   72%{box-shadow:0 22px 64px rgba(15,23,42,.38),0 0 32px rgba(36,224,208,.18)}
   100%{box-shadow:0 24px 72px rgba(15,23,42,.34),0 0 22px rgba(36,224,208,.08)}
 }
-@keyframes calculatorImpactFlash{
+@keyframes calculatorPanelImpactGlowB{
+  0%,45%{box-shadow:0 24px 72px rgba(15,23,42,.34),0 0 22px rgba(36,224,208,.08)}
+  56%{box-shadow:0 8px 26px rgba(15,23,42,.48),0 0 0 2px rgba(126,255,245,.48),0 0 54px rgba(36,224,208,.36)}
+  72%{box-shadow:0 22px 64px rgba(15,23,42,.38),0 0 32px rgba(36,224,208,.18)}
+  100%{box-shadow:0 24px 72px rgba(15,23,42,.34),0 0 22px rgba(36,224,208,.08)}
+}
+@keyframes calculatorImpactFlashA{
   0%{opacity:0;transform:translateX(-50%) scale(.15)}
   18%{opacity:1}
   100%{opacity:0;transform:translateX(-50%) scale(1.8)}
 }
-@keyframes calculatorShockwave{
+@keyframes calculatorImpactFlashB{
+  0%{opacity:0;transform:translateX(-50%) scale(.15)}
+  18%{opacity:1}
+  100%{opacity:0;transform:translateX(-50%) scale(1.8)}
+}
+@keyframes calculatorShockwaveA{
   0%{opacity:0;transform:translateX(-50%) scale(.12)}
   16%{opacity:.9}
   100%{opacity:0;transform:translateX(-50%) scale(4.7)}
 }
-@keyframes calculatorGroundPulse{
+@keyframes calculatorShockwaveB{
+  0%{opacity:0;transform:translateX(-50%) scale(.12)}
+  16%{opacity:.9}
+  100%{opacity:0;transform:translateX(-50%) scale(4.7)}
+}
+@keyframes calculatorGroundPulseA{
   0%{opacity:0;transform:translateX(-50%) scaleX(.05)}
   22%{opacity:1}
   100%{opacity:0;transform:translateX(-50%) scaleX(1.25)}
 }
-@keyframes calculatorParticleBurst{
+@keyframes calculatorGroundPulseB{
+  0%{opacity:0;transform:translateX(-50%) scaleX(.05)}
+  22%{opacity:1}
+  100%{opacity:0;transform:translateX(-50%) scaleX(1.25)}
+}
+@keyframes calculatorParticleBurstA{
   0%{opacity:0;transform:translate3d(0,0,0) rotate(0) scale(.3)}
   18%{opacity:1}
   100%{opacity:0;transform:translate3d(var(--x),var(--y),0) rotate(var(--rotation,120deg)) scale(.08)}
 }
-@keyframes calculatorFracture{
+@keyframes calculatorParticleBurstB{
+  0%{opacity:0;transform:translate3d(0,0,0) rotate(0) scale(.3)}
+  18%{opacity:1}
+  100%{opacity:0;transform:translate3d(var(--x),var(--y),0) rotate(var(--rotation,120deg)) scale(.08)}
+}
+@keyframes calculatorFractureA{
   0%{opacity:0;transform:rotate(var(--angle,0deg)) scaleX(0)}
   24%{opacity:.86}
   100%{opacity:0;transform:rotate(var(--angle,0deg)) scaleX(1)}
 }
-@keyframes calculatorWorldShake{
+@keyframes calculatorFractureB{
+  0%{opacity:0;transform:rotate(var(--angle,0deg)) scaleX(0)}
+  24%{opacity:.86}
+  100%{opacity:0;transform:rotate(var(--angle,0deg)) scaleX(1)}
+}
+@keyframes calculatorWorldShakeA{
+  0%,100%{transform:translate3d(0,0,0)}
+  15%{transform:translate3d(-7px,2px,0)}
+  32%{transform:translate3d(6px,-2px,0)}
+  49%{transform:translate3d(-4px,1px,0)}
+  67%{transform:translate3d(3px,-1px,0)}
+  84%{transform:translate3d(-1px,0,0)}
+}
+@keyframes calculatorWorldShakeB{
   0%,100%{transform:translate3d(0,0,0)}
   15%{transform:translate3d(-7px,2px,0)}
   32%{transform:translate3d(6px,-2px,0)}
@@ -369,8 +424,10 @@ h1{
   48%{transform:translateY(-5px) scale(1.035)}
   72%{transform:translateY(-1px) scale(.995)}
 }
-body.calculator-impact .topbar-inner,
-body.calculator-impact main{animation:calculatorWorldShake .38s cubic-bezier(.2,.8,.2,1)}
+body.calculator-impact-a .topbar-inner,
+body.calculator-impact-a main{animation:calculatorWorldShakeA .38s cubic-bezier(.2,.8,.2,1)}
+body.calculator-impact-b .topbar-inner,
+body.calculator-impact-b main{animation:calculatorWorldShakeB .38s cubic-bezier(.2,.8,.2,1)}
 @media(max-width:640px){
   .calculator-overlay{
     right:8px;
@@ -384,8 +441,10 @@ body.calculator-impact main{animation:calculatorWorldShake .38s cubic-bezier(.2,
   .calculator-overlay.impact-animating,
   .calculator-overlay.impact-animating .calculator-panel,
   .calculator-overlay.impact-animating .calculator-impact-fx *,
-  body.calculator-impact .topbar-inner,
-  body.calculator-impact main{animation:none!important}
+  body.calculator-impact-a .topbar-inner,
+  body.calculator-impact-a main,
+  body.calculator-impact-b .topbar-inner,
+  body.calculator-impact-b main{animation:none!important}
 }
 main{
   max-width:1180px;
@@ -2211,6 +2270,7 @@ function flushCalculatorKeys(){
 standardCalculatorFrame.addEventListener("load", flushCalculatorKeys);
 
 const calculatorImpactTimers = [];
+let calculatorImpactVariant = false;
 
 function clearCalculatorImpactTimers(){
   while(calculatorImpactTimers.length) window.clearTimeout(calculatorImpactTimers.pop());
@@ -2218,10 +2278,13 @@ function clearCalculatorImpactTimers(){
 
 function playCalculatorImpact(){
   clearCalculatorImpactTimers();
-  document.body.classList.remove("calculator-impact");
-  standardCalculatorOverlay.classList.remove("impact-animating");
+  document.body.classList.remove("calculator-impact-a", "calculator-impact-b");
+  standardCalculatorOverlay.classList.remove("impact-animating", "impact-run-a", "impact-run-b");
   openStandardCalculator.classList.remove("launching");
   if(window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+  calculatorImpactVariant = !calculatorImpactVariant;
+  const impactRunClass = calculatorImpactVariant ? "impact-run-a" : "impact-run-b";
+  const bodyImpactClass = calculatorImpactVariant ? "calculator-impact-a" : "calculator-impact-b";
   const animatedNodes = [
     standardCalculatorOverlay,
     standardCalculatorOverlay.querySelector(".calculator-panel"),
@@ -2232,16 +2295,16 @@ function playCalculatorImpact(){
   void standardCalculatorOverlay.offsetWidth;
   animatedNodes.forEach(node => { node.style.removeProperty("animation"); });
   void standardCalculatorOverlay.offsetWidth;
-  standardCalculatorOverlay.classList.add("impact-animating");
+  standardCalculatorOverlay.classList.add("impact-animating", impactRunClass);
   openStandardCalculator.classList.add("launching");
   calculatorImpactTimers.push(window.setTimeout(() => {
-    document.body.classList.add("calculator-impact");
+    document.body.classList.add(bodyImpactClass);
   }, 575));
   calculatorImpactTimers.push(window.setTimeout(() => {
-    document.body.classList.remove("calculator-impact");
+    document.body.classList.remove("calculator-impact-a", "calculator-impact-b");
   }, 980));
   calculatorImpactTimers.push(window.setTimeout(() => {
-    standardCalculatorOverlay.classList.remove("impact-animating");
+    standardCalculatorOverlay.classList.remove("impact-animating", "impact-run-a", "impact-run-b");
     openStandardCalculator.classList.remove("launching");
   }, 1250));
 }
@@ -2256,8 +2319,8 @@ function setStandardCalculatorOpen(isOpen){
     playCalculatorImpact();
   }else if(!isOpen){
     clearCalculatorImpactTimers();
-    document.body.classList.remove("calculator-impact");
-    standardCalculatorOverlay.classList.remove("impact-animating");
+    document.body.classList.remove("calculator-impact-a", "calculator-impact-b");
+    standardCalculatorOverlay.classList.remove("impact-animating", "impact-run-a", "impact-run-b");
     openStandardCalculator.classList.remove("launching");
     openStandardCalculator.focus();
   }
