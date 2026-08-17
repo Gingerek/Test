@@ -123,6 +123,17 @@ h1{
   width:min(410px,calc(100vw - 28px));
   height:min(760px,calc(100vh - 28px));
   background:transparent;
+  opacity:1;
+  visibility:visible;
+  transform:translateX(0);
+  transition:opacity .18s ease,transform .22s ease,visibility 0s;
+}
+.calculator-overlay.is-closed{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateX(calc(100% + 30px));
+  transition:opacity .16s ease,transform .2s ease,visibility 0s .2s;
 }
 .calculator-panel{
   width:100%;
@@ -1082,7 +1093,7 @@ tr.selected td{
   </div>
 </header>
 
-<div class="calculator-overlay" id="standardCalculatorOverlay" hidden>
+<div class="calculator-overlay is-closed" id="standardCalculatorOverlay" aria-hidden="true">
   <section class="calculator-panel" role="region" aria-labelledby="standardCalculatorTitle">
     <header class="calculator-panel-head">
       <strong id="standardCalculatorTitle">Calculator</strong>
@@ -1956,9 +1967,21 @@ const standardCalculatorOverlay = el("standardCalculatorOverlay");
 const standardCalculatorFrame = el("standardCalculatorFrame");
 const openStandardCalculator = el("openStandardCalculator");
 const closeStandardCalculator = el("closeStandardCalculator");
+let standardCalculatorReady = standardCalculatorFrame.contentDocument?.readyState === "complete";
+const pendingCalculatorKeys = [];
+
+function flushCalculatorKeys(){
+  standardCalculatorReady = true;
+  while(pendingCalculatorKeys.length){
+    standardCalculatorFrame.contentWindow?.postMessage({type:"msd-calculator-key",key:pendingCalculatorKeys.shift()}, "*");
+  }
+}
+
+standardCalculatorFrame.addEventListener("load", flushCalculatorKeys);
 
 function setStandardCalculatorOpen(isOpen){
-  standardCalculatorOverlay.hidden = !isOpen;
+  standardCalculatorOverlay.classList.toggle("is-closed", !isOpen);
+  standardCalculatorOverlay.setAttribute("aria-hidden", String(!isOpen));
   openStandardCalculator.setAttribute("aria-expanded", String(isOpen));
   if(!isOpen) openStandardCalculator.focus();
 }
@@ -1968,12 +1991,16 @@ closeStandardCalculator.addEventListener("click", () => setStandardCalculatorOpe
 
 const calculatorKeyboardKeys = new Set([".",",","+","-","*","/","Enter","=","Escape","Delete","Backspace","%"]);
 document.addEventListener("keydown", event => {
-  if(standardCalculatorOverlay.hidden) return;
+  if(standardCalculatorOverlay.classList.contains("is-closed")) return;
   const target = event.target;
   const isEditing = target && (target.matches?.("input, textarea, select") || target.isContentEditable);
   if(isEditing) return;
   if(!/^\d$/.test(event.key) && !calculatorKeyboardKeys.has(event.key)) return;
-  standardCalculatorFrame.contentWindow?.postMessage({type:"msd-calculator-key",key:event.key}, "*");
+  if(standardCalculatorReady){
+    standardCalculatorFrame.contentWindow?.postMessage({type:"msd-calculator-key",key:event.key}, "*");
+  }else{
+    pendingCalculatorKeys.push(event.key);
+  }
   event.preventDefault();
 });
 el("copyBtn").addEventListener("click", async () => {
