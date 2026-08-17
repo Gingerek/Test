@@ -2285,15 +2285,6 @@ function playCalculatorImpact(){
   calculatorImpactVariant = !calculatorImpactVariant;
   const impactRunClass = calculatorImpactVariant ? "impact-run-a" : "impact-run-b";
   const bodyImpactClass = calculatorImpactVariant ? "calculator-impact-a" : "calculator-impact-b";
-  const animatedNodes = [
-    standardCalculatorOverlay,
-    standardCalculatorOverlay.querySelector(".calculator-panel"),
-    ...standardCalculatorOverlay.querySelectorAll(".calculator-impact-fx *"),
-    openStandardCalculator
-  ].filter(Boolean);
-  animatedNodes.forEach(node => { node.style.animation = "none"; });
-  void standardCalculatorOverlay.offsetWidth;
-  animatedNodes.forEach(node => { node.style.removeProperty("animation"); });
   void standardCalculatorOverlay.offsetWidth;
   standardCalculatorOverlay.classList.add("impact-animating", impactRunClass);
   openStandardCalculator.classList.add("launching");
