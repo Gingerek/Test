@@ -190,6 +190,13 @@ main{
   max-width:1180px;
   margin:22px auto 36px;
   padding:0 16px;
+  transition:max-width .22s ease,margin .22s ease;
+}
+@media(min-width:1200px){
+  body.calculator-open main{
+    max-width:min(1180px,calc(100vw - 438px));
+    margin-right:438px;
+  }
 }
 .layout{
   display:grid;
@@ -1983,6 +1990,7 @@ function setStandardCalculatorOpen(isOpen){
   standardCalculatorOverlay.classList.toggle("is-closed", !isOpen);
   standardCalculatorOverlay.setAttribute("aria-hidden", String(!isOpen));
   openStandardCalculator.setAttribute("aria-expanded", String(isOpen));
+  document.body.classList.toggle("calculator-open", isOpen);
   if(!isOpen) openStandardCalculator.focus();
 }
 
