@@ -180,8 +180,6 @@ h1{
 .calculator-overlay.impact-animating{
   will-change:transform,opacity,filter;
 }
-.calculator-overlay.impact-animating.impact-run-a{animation:calculatorHeavyDropA 1.12s both cubic-bezier(.16,.82,.22,1)}
-.calculator-overlay.impact-animating.impact-run-b{animation:calculatorHeavyDropB 1.12s both cubic-bezier(.16,.82,.22,1)}
 .calculator-panel{
   position:relative;
   z-index:2;
@@ -195,8 +193,6 @@ h1{
   background:#06101c;
   box-shadow:0 24px 72px rgba(15,23,42,.34),0 0 22px rgba(36,224,208,.08);
 }
-.calculator-overlay.impact-animating.impact-run-a .calculator-panel{animation:calculatorPanelImpactGlowA 1.12s both ease-out}
-.calculator-overlay.impact-animating.impact-run-b .calculator-panel{animation:calculatorPanelImpactGlowB 1.12s both ease-out}
 .calculator-panel-head{
   min-height:50px;
   padding:7px 9px 7px 15px;
@@ -320,38 +316,6 @@ h1{
 .calculator-overlay.impact-run-b .impact-particle{animation:calculatorParticleBurstB .78s calc(.55s + var(--delay,0ms)) both cubic-bezier(.14,.64,.28,1)}
 .calculator-overlay.impact-run-a .impact-fracture{animation:calculatorFractureA .72s calc(.56s + var(--delay,0ms)) both ease-out}
 .calculator-overlay.impact-run-b .impact-fracture{animation:calculatorFractureB .72s calc(.56s + var(--delay,0ms)) both ease-out}
-@keyframes calculatorHeavyDropA{
-  0%{opacity:0;filter:blur(2px);transform:translate3d(0,calc(-100vh - 220px),0) rotate(-2.8deg) scale(.94)}
-  40%{opacity:1;filter:blur(0)}
-  56%{transform:translate3d(0,0,0) rotate(.7deg) scaleX(1.045) scaleY(.955)}
-  66%{transform:translate3d(0,-34px,0) rotate(-.5deg) scaleX(.992) scaleY(1.008)}
-  76%{transform:translate3d(0,0,0) rotate(.22deg) scaleX(1.02) scaleY(.98)}
-  85%{transform:translate3d(0,-10px,0) rotate(-.12deg) scale(.998)}
-  93%{transform:translate3d(0,0,0) rotate(.05deg) scaleX(1.006) scaleY(.994)}
-  100%{opacity:1;filter:none;transform:translate3d(0,0,0) rotate(0) scale(1)}
-}
-@keyframes calculatorHeavyDropB{
-  0%{opacity:0;filter:blur(2px);transform:translate3d(0,calc(-100vh - 220px),0) rotate(-2.8deg) scale(.94)}
-  40%{opacity:1;filter:blur(0)}
-  56%{transform:translate3d(0,0,0) rotate(.7deg) scaleX(1.045) scaleY(.955)}
-  66%{transform:translate3d(0,-34px,0) rotate(-.5deg) scaleX(.992) scaleY(1.008)}
-  76%{transform:translate3d(0,0,0) rotate(.22deg) scaleX(1.02) scaleY(.98)}
-  85%{transform:translate3d(0,-10px,0) rotate(-.12deg) scale(.998)}
-  93%{transform:translate3d(0,0,0) rotate(.05deg) scaleX(1.006) scaleY(.994)}
-  100%{opacity:1;filter:none;transform:translate3d(0,0,0) rotate(0) scale(1)}
-}
-@keyframes calculatorPanelImpactGlowA{
-  0%,45%{box-shadow:0 24px 72px rgba(15,23,42,.34),0 0 22px rgba(36,224,208,.08)}
-  56%{box-shadow:0 8px 26px rgba(15,23,42,.48),0 0 0 2px rgba(126,255,245,.48),0 0 54px rgba(36,224,208,.36)}
-  72%{box-shadow:0 22px 64px rgba(15,23,42,.38),0 0 32px rgba(36,224,208,.18)}
-  100%{box-shadow:0 24px 72px rgba(15,23,42,.34),0 0 22px rgba(36,224,208,.08)}
-}
-@keyframes calculatorPanelImpactGlowB{
-  0%,45%{box-shadow:0 24px 72px rgba(15,23,42,.34),0 0 22px rgba(36,224,208,.08)}
-  56%{box-shadow:0 8px 26px rgba(15,23,42,.48),0 0 0 2px rgba(126,255,245,.48),0 0 54px rgba(36,224,208,.36)}
-  72%{box-shadow:0 22px 64px rgba(15,23,42,.38),0 0 32px rgba(36,224,208,.18)}
-  100%{box-shadow:0 24px 72px rgba(15,23,42,.34),0 0 22px rgba(36,224,208,.08)}
-}
 @keyframes calculatorImpactFlashA{
   0%{opacity:0;transform:translateX(-50%) scale(.15)}
   18%{opacity:1}
@@ -402,32 +366,17 @@ h1{
   24%{opacity:.86}
   100%{opacity:0;transform:rotate(var(--angle,0deg)) scaleX(1)}
 }
-@keyframes calculatorWorldShakeA{
-  0%,100%{transform:translate3d(0,0,0)}
-  15%{transform:translate3d(-7px,2px,0)}
-  32%{transform:translate3d(6px,-2px,0)}
-  49%{transform:translate3d(-4px,1px,0)}
-  67%{transform:translate3d(3px,-1px,0)}
-  84%{transform:translate3d(-1px,0,0)}
-}
-@keyframes calculatorWorldShakeB{
-  0%,100%{transform:translate3d(0,0,0)}
-  15%{transform:translate3d(-7px,2px,0)}
-  32%{transform:translate3d(6px,-2px,0)}
-  49%{transform:translate3d(-4px,1px,0)}
-  67%{transform:translate3d(3px,-1px,0)}
-  84%{transform:translate3d(-1px,0,0)}
-}
 @keyframes calculatorLaunchRecoil{
   0%,100%{transform:translateY(-2px) scale(1)}
   24%{transform:translateY(2px) scale(.96)}
   48%{transform:translateY(-5px) scale(1.035)}
   72%{transform:translateY(-1px) scale(.995)}
 }
-body.calculator-impact-a .topbar-inner,
-body.calculator-impact-a main{animation:calculatorWorldShakeA .38s cubic-bezier(.2,.8,.2,1)}
-body.calculator-impact-b .topbar-inner,
-body.calculator-impact-b main{animation:calculatorWorldShakeB .38s cubic-bezier(.2,.8,.2,1)}
+body.calculator-impact-manual .topbar-inner,
+body.calculator-impact-manual main{
+  transform:translate3d(var(--calculator-impact-x,0),var(--calculator-impact-y,0),0);
+  will-change:transform;
+}
 @media(max-width:640px){
   .calculator-overlay{
     right:8px;
@@ -440,11 +389,7 @@ body.calculator-impact-b main{animation:calculatorWorldShakeB .38s cubic-bezier(
   .calculator-overlay,.calculator-launch{transition:none}
   .calculator-overlay.impact-animating,
   .calculator-overlay.impact-animating .calculator-panel,
-  .calculator-overlay.impact-animating .calculator-impact-fx *,
-  body.calculator-impact-a .topbar-inner,
-  body.calculator-impact-a main,
-  body.calculator-impact-b .topbar-inner,
-  body.calculator-impact-b main{animation:none!important}
+  .calculator-overlay.impact-animating .calculator-impact-fx *{animation:none!important}
 }
 main{
   max-width:1180px;
@@ -2271,33 +2216,124 @@ standardCalculatorFrame.addEventListener("load", flushCalculatorKeys);
 
 const calculatorImpactTimers = [];
 let calculatorImpactVariant = false;
+let calculatorImpactFrame = 0;
 
 function clearCalculatorImpactTimers(){
   while(calculatorImpactTimers.length) window.clearTimeout(calculatorImpactTimers.pop());
 }
 
+function clearCalculatorImpactMotion(){
+  if(calculatorImpactFrame) window.cancelAnimationFrame(calculatorImpactFrame);
+  calculatorImpactFrame = 0;
+  document.body.classList.remove("calculator-impact-manual");
+  document.body.style.removeProperty("--calculator-impact-x");
+  document.body.style.removeProperty("--calculator-impact-y");
+  standardCalculatorOverlay.style.removeProperty("animation");
+  standardCalculatorOverlay.style.removeProperty("filter");
+  standardCalculatorOverlay.style.removeProperty("opacity");
+  standardCalculatorOverlay.style.removeProperty("transform");
+  standardCalculatorOverlay.style.removeProperty("transition");
+  standardCalculatorOverlay.querySelector(".calculator-panel")?.style.removeProperty("animation");
+  standardCalculatorOverlay.querySelector(".calculator-panel")?.style.removeProperty("box-shadow");
+}
+
 function playCalculatorImpact(){
   clearCalculatorImpactTimers();
-  document.body.classList.remove("calculator-impact-a", "calculator-impact-b");
+  clearCalculatorImpactMotion();
   standardCalculatorOverlay.classList.remove("impact-animating", "impact-run-a", "impact-run-b");
   openStandardCalculator.classList.remove("launching");
   if(window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+
   calculatorImpactVariant = !calculatorImpactVariant;
   const impactRunClass = calculatorImpactVariant ? "impact-run-a" : "impact-run-b";
-  const bodyImpactClass = calculatorImpactVariant ? "calculator-impact-a" : "calculator-impact-b";
-  void standardCalculatorOverlay.offsetWidth;
+  const oldImpactFx = standardCalculatorOverlay.querySelector(".calculator-impact-fx");
+  oldImpactFx?.replaceWith(oldImpactFx.cloneNode(true));
+  const calculatorPanel = standardCalculatorOverlay.querySelector(".calculator-panel");
+
   standardCalculatorOverlay.classList.add("impact-animating", impactRunClass);
   openStandardCalculator.classList.add("launching");
-  calculatorImpactTimers.push(window.setTimeout(() => {
-    document.body.classList.add(bodyImpactClass);
-  }, 575));
-  calculatorImpactTimers.push(window.setTimeout(() => {
-    document.body.classList.remove("calculator-impact-a", "calculator-impact-b");
-  }, 980));
+  standardCalculatorOverlay.style.animation = "none";
+  standardCalculatorOverlay.style.transition = "none";
+  if(calculatorPanel) calculatorPanel.style.animation = "none";
+
+  const dropFrames = [
+    {time:0,y:-(window.innerHeight + 220),rotation:-2.8,scaleX:.94,scaleY:.94},
+    {time:.56,y:0,rotation:.7,scaleX:1.045,scaleY:.955},
+    {time:.66,y:-34,rotation:-.5,scaleX:.992,scaleY:1.008},
+    {time:.76,y:0,rotation:.22,scaleX:1.02,scaleY:.98},
+    {time:.85,y:-10,rotation:-.12,scaleX:.998,scaleY:.998},
+    {time:.93,y:0,rotation:.05,scaleX:1.006,scaleY:.994},
+    {time:1,y:0,rotation:0,scaleX:1,scaleY:1}
+  ];
+
+  function drawCalculatorImpact(progress){
+    let startFrame = dropFrames[0];
+    let endFrame = dropFrames[dropFrames.length - 1];
+    let segmentIndex = 1;
+    for(let index = 1; index < dropFrames.length; index += 1){
+      if(progress <= dropFrames[index].time){
+        startFrame = dropFrames[index - 1];
+        endFrame = dropFrames[index];
+        segmentIndex = index;
+        break;
+      }
+    }
+    const segmentLength = Math.max(.001,endFrame.time - startFrame.time);
+    const segmentProgress = Math.max(0,Math.min(1,(progress - startFrame.time) / segmentLength));
+    const easedProgress = segmentIndex === 1
+      ? segmentProgress * segmentProgress
+      : 1 - Math.pow(1 - segmentProgress,2);
+    const mix = property => startFrame[property] + (endFrame[property] - startFrame[property]) * easedProgress;
+    const fadeProgress = Math.max(0,Math.min(1,progress / .4));
+    const opacity = fadeProgress * fadeProgress * (3 - 2 * fadeProgress);
+    const blur = Math.max(0,2 * (1 - fadeProgress));
+
+    standardCalculatorOverlay.style.opacity = String(opacity);
+    standardCalculatorOverlay.style.filter = blur > .02 ? `blur(${blur.toFixed(2)}px)` : "none";
+    standardCalculatorOverlay.style.transform = `translate3d(0,${mix("y").toFixed(2)}px,0) rotate(${mix("rotation").toFixed(3)}deg) scaleX(${mix("scaleX").toFixed(4)}) scaleY(${mix("scaleY").toFixed(4)})`;
+
+    const glow = progress < .48 ? 0 : progress < .58
+      ? (progress - .48) / .1
+      : progress < .8 ? 1 - (progress - .58) / .22 : 0;
+    if(calculatorPanel){
+      const glowLevel = Math.max(0,Math.min(1,glow));
+      calculatorPanel.style.boxShadow = `0 ${Math.round(24 - 16 * glowLevel)}px ${Math.round(72 - 34 * glowLevel)}px rgba(15,23,42,${(.34 + .14 * glowLevel).toFixed(3)}),0 0 0 ${(2 * glowLevel).toFixed(2)}px rgba(126,255,245,${(.48 * glowLevel).toFixed(3)}),0 0 ${Math.round(22 + 34 * glowLevel)}px rgba(36,224,208,${(.08 + .28 * glowLevel).toFixed(3)})`;
+    }
+
+    if(progress >= .54 && progress <= .9){
+      const shakeProgress = (progress - .54) / .36;
+      const shakeStrength = (1 - shakeProgress) * 8;
+      const shakeX = Math.sin(shakeProgress * Math.PI * 10) * shakeStrength;
+      const shakeY = Math.sin(shakeProgress * Math.PI * 16) * shakeStrength * .28;
+      document.body.classList.add("calculator-impact-manual");
+      document.body.style.setProperty("--calculator-impact-x",`${shakeX.toFixed(2)}px`);
+      document.body.style.setProperty("--calculator-impact-y",`${shakeY.toFixed(2)}px`);
+    }else{
+      document.body.classList.remove("calculator-impact-manual");
+      document.body.style.removeProperty("--calculator-impact-x");
+      document.body.style.removeProperty("--calculator-impact-y");
+    }
+  }
+
+  drawCalculatorImpact(0);
+  const impactStart = performance.now();
+  const impactDuration = 1120;
+  function advanceCalculatorImpact(now){
+    const progress = Math.min(1,(now - impactStart) / impactDuration);
+    drawCalculatorImpact(progress);
+    if(progress < 1){
+      calculatorImpactFrame = window.requestAnimationFrame(advanceCalculatorImpact);
+    }else{
+      calculatorImpactFrame = 0;
+    }
+  }
+  calculatorImpactFrame = window.requestAnimationFrame(advanceCalculatorImpact);
+
   calculatorImpactTimers.push(window.setTimeout(() => {
     standardCalculatorOverlay.classList.remove("impact-animating", "impact-run-a", "impact-run-b");
     openStandardCalculator.classList.remove("launching");
-  }, 1250));
+    clearCalculatorImpactMotion();
+  }, 1550));
 }
 
 function setStandardCalculatorOpen(isOpen){
@@ -2310,7 +2346,7 @@ function setStandardCalculatorOpen(isOpen){
     playCalculatorImpact();
   }else if(!isOpen){
     clearCalculatorImpactTimers();
-    document.body.classList.remove("calculator-impact-a", "calculator-impact-b");
+    clearCalculatorImpactMotion();
     standardCalculatorOverlay.classList.remove("impact-animating", "impact-run-a", "impact-run-b");
     openStandardCalculator.classList.remove("launching");
     openStandardCalculator.focus();
